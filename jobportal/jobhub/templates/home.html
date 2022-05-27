@@ -1,0 +1,219 @@
+{% load static %}
+{% block header%}
+{% include 'header.html' %}
+
+
+<div class="slideshow-container">
+
+<div class="mySlides">
+
+  <img class="i" src="{% static 'images/home1.png' %}" alt="" style="width:100%"/>
+  <div class="text">Find The Best Job That You Deserve</div>
+   <button onclick="window.location.href='/latest_joblist'" class="b1">Search Job</button>
+  <button onclick="window.location.href='/add_job'" class="b2">Post Job</button>
+</div>
+
+<div class="mySlides">
+
+  <img class="i" src="{% static 'images/home2.png' %}" alt="" style="width:100%"/>
+  <div class="text">Find The Best Job That You Deserve</div>
+   <button onclick="window.location.href='/latest_joblist'" class="b1">Search Job</button>
+  <button onclick="window.location.href='/add_job'" class="b2">Post Job</button>
+</div>
+
+<div class="mySlides">
+
+  <img class="i" src="{% static 'images/home3.png' %}" alt="" style="width:100%"/>
+  <div class="text">Find The Best Job That You Deserve</div>
+   <button onclick="window.location.href='/latest_joblist'" class="b1">Search Job</button>
+  <button onclick="window.location.href='/add_job'" class="b2">Post Job</button>
+</div>
+
+</div>
+
+
+<div class="d2" style="text-align:center">
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+</div>
+
+<script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  setTimeout(showSlides, 5000);
+}
+</script>
+<!--
+ <div class="container2">
+                <div class="row g-2">
+                    <div class="col-md-10">
+                        <div class="row g-2">
+                            <div class="col-md-4">
+                                <input type="text" class="form-control border-0" placeholder="Keyword" />
+                            </div>
+
+                            <div class="col-md-4">
+                                <input type="text" class="form-control border-0" placeholder="Location" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="b3">Search</button>
+                    </div>
+                </div>
+            </div>
+-->
+<hr>
+
+<div class="container">
+  <h2 align="center">LATEST JOB</h2>
+<div class="cards">
+    {% for i in job %}
+     <article class="card">
+            <h2>{{i.title}}</h2>
+            <h3>{{i.recruiter.U_name}}</h3>
+            <p>{{i.skills}}</p>
+            <p>{{i.location}}</p>
+
+            <a href="{% url 'job_apply' i.id %}"  class="button button2">VIEW DETAILS</a>
+    </article>
+     {% endfor %}
+</div>
+</div>
+<div class="container">
+  <h2 align="center">RECENT FEEDDBACK</h2>
+<div class="cards">
+    {% for i in feedback %}
+     <article class="card">
+        <p>{{i.review}}</p>
+    </article>
+     {% endfor %}
+</div>
+</div>
+<style>
+    .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 20px;
+    padding : 50px;
+    }
+
+.card {
+    display: grid;
+    grid-template-rows: max-content 90px;
+     background-color:#E1F5ED;
+
+}
+
+.button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+ h2, h3, p{
+  margin-top:2px;
+  margin-bottom:2px;
+  line-height: 35px;
+  padding-left : 10px;
+}
+
+.button2 {background-color: #0B5345;}
+.button2:hover{background-color: #117A65;}
+</style>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{%static 'js/bootstrap.min.js' %}"></script>
+
+
+
+<style>
+    .footer{
+    background : #154360;
+    }
+</style>
+<div class="footer">
+	<div class="container">
+		<div class="col-md-3 grid_3">
+			<h4>Navigate</h4>
+			<ul class="f_list f_list1">
+				<li><a href="\home">Home</a></li>
+				<li><a href="\jobseeker_login">Search Job</a></li>
+				<li><a href="\recruiter_login">Post Job</a></li>
+                <li><a href="#">Feedback</a></li>
+			</ul>
+
+			<div class="clearfix"> </div>
+		</div>
+			<h4 style="color:white">Contact Us</h4><br>
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            <a href="#" class="fa fa-google"></a>
+            <a href="#" class="fa fa-linkedin"></a>
+            <a href="#" class="fa fa-yahoo"></a>
+	</div>
+</div>
+			<style>
+.fa {
+  padding: 10px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+.fa-yahoo {
+  background: #430297;
+  color: white;
+}
+
+</style>
+{% endblock %}

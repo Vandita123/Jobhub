@@ -1,0 +1,142 @@
+{% load static %}
+{% block jobprovider_navigation %}
+{% include 'jobprovider_navigation.html' %}
+<hr>
+
+<div class="container">
+    <span style="color:#ff0000;font-size:12px;">* are the Required field</span>
+<form class="mt-5" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Job title</label>
+            <input type="text" class="form-control" name="title" value="{{job.title}}" readonly>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+        <label>Job Role</label>
+        <input type="text" class="form-control" name="role" value="{{job.role}}" readonly>
+        </div>
+    </div>
+
+	<div class="form-row">
+         <div class="form-group col-md-12">
+              <label>Contact<span style="color:#ff0000;font-size:20px;">*</span></label>
+             <input type="text" class="form-control" name="contact" value="{{job.contact}}" required>
+         </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label>Email id</label>
+            <input type="text" class="form-control" name="email" value="{{job.recruiter.U_email}}" readonly>
+        </div>
+    </div>
+
+    <div class="form-row">
+                    <div class="form-group col-md-6">
+                    <label>Address<span style="color:#ff0000;font-size:20px;">*</span></label>
+                        <select name="address" class="form-control input-sm">
+                            <option value="">Select State</option>
+                            <option value="AN">Andaman and Nicobar Islands</option>
+                            <option value="AP">Andhra Pradesh</option>
+                            <option value="AR">Arunachal Pradesh</option>
+                            <option value="AS">Assam</option>
+                            <option value="BR">Bihar</option>
+                            <option value="CH">Chandigarh</option>
+                            <option value="CT">Chhattisgarh</option>
+                            <option value="DN">Dadra and Nagar Haveli</option>
+                            <option value="DD">Daman and Diu</option>
+                            <option value="DL">Delhi</option>
+                            <option value="GA">Goa</option>
+                            <option value="GJ">Gujarat</option>
+                            <option value="HR">Haryana</option>
+                            <option value="HP">Himachal Pradesh</option>
+                            <option value="JK">Jammu and Kashmir</option>
+                            <option value="JH">Jharkhand</option>
+                            <option value="KA">Karnataka</option>
+                            <option value="KL">Kerala</option>
+                            <option value="LA">Ladakh</option>
+                            <option value="LD">Lakshadweep</option>
+                            <option value="MP">Madhya Pradesh</option>
+                            <option value="MH">Maharashtra</option>
+                            <option value="MN">Manipur</option>
+                            <option value="ML">Meghalaya</option>
+                            <option value="MZ">Mizoram</option>
+                            <option value="NL">Nagaland</option>
+                            <option value="OR">Odisha</option>
+                            <option value="PY">Puducherry</option>
+                            <option value="PB">Punjab</option>
+                            <option value="RJ">Rajasthan</option>
+                            <option value="SK">Sikkim</option>
+                            <option value="TN">Tamil Nadu</option>
+                            <option value="TG">Telangana</option>
+                            <option value="TR">Tripura</option>
+                            <option value="UP">Uttar Pradesh</option>
+                            <option value="UT">Uttarakhand</option>
+                            <option value="WB">West Bengal</option>
+                        </select>
+                    </div>
+                </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Start Date<span style="color:#ff0000;font-size:20px;">*</span></label>
+            <input type="date" class="form-control" name="startdate">
+        </div>
+
+    </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label>End Date<span style="color:#ff0000;font-size:20px;">*</span></label>
+                <input type="date" class="form-control" name="enddate">
+            </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Salary(yearly in Indian currency)<span style="color:#ff0000;font-size:20px;">*</span></label>
+            <input type="number" class="form-control" name="salary" value="{{job.salary}}" required>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Experience(in years)<span style="color:#ff0000;font-size:20px;">*</span></label>
+            <input type="text" class="form-control" name="experience" value="{{job.experience}}"required>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Skills<span style="color:#ff0000;font-size:20px;">*</span></label>
+            <input type="text" class="form-control" name="skills" value="{{job.skills}}" required>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label>About<span style="color:#ff0000;font-size:20px;">*</span></label>
+            <textarea class="form-control" name="about" required>{{job.about}}</textarea>
+        </div>
+    </div>
+
+    <input type="submit" value="Update" class="btn btn-primary my-3" style="...">
+ </form>
+</div>
+{%if error == "no"%}
+<script>
+alert("Job updated successfully!")
+window.location.replace('{% url 'edit_job' job.id %}');
+</script>
+{% endif %}
+
+{%if error == "yes"%}
+<script>
+alert("Network issue!!")
+</script>
+{% endif %}
+
+{% endblock %}

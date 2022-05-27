@@ -1,0 +1,46 @@
+{% load static %}
+{% block jobprovider_navigation %}
+{% include 'jobprovider_navigation.html' %}
+<br>
+<h2 align="center" style="">
+    Applied candidates list
+</h2>
+<hr>
+<div class="container">
+    <table border="1" class="table table-hover" id="example">
+        <thead>
+        <tr style="background-color: #000000;">
+            <th>S.no</th>
+            <th>Full Name</th>
+            <th>Email ID</th>
+            <th>Contact No.</th>
+            <th>Job Title</th>
+            <th>Company</th>
+            <th>Apply Date</th>
+            <th>Salary</th>
+            <th>Resume<th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for i in data %}
+        {% if request.user.id == i.job.recruiter.user.id %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.student.J_fname}} {{i.student.J_lname}}</td>
+            <td>{{i.student.user.username}}</td>
+            <td>{{i.student.J_contact}}</td>
+            <td>{{i.job.title}}</td>
+            <td>{{i.job.recruiter.U_name}}</td>
+            <td>{{i.applydate}}</td>
+            <td>{{i.job.salary}}</td>
+            <td><a href="{% url 'download' i.id %}">View Resume</a></td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</hr>
+
+{% endblock %}

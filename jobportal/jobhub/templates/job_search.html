@@ -1,0 +1,190 @@
+{% load static %}
+{% block jobseeker_navigation %}
+{% include 'jobseeker_navigation.html' %}
+
+<br>
+<div class="container">
+<div style="background-color: #0B5345; padding : 25px;">
+    <form method="post">
+		  {% csrf_token %}
+                <div class="row g-2">
+                    <div class="col-md-10">
+                        <div class="row g-2">
+                            <div class="col-md-4">
+                                <select name="f1" class="form-control input-sm">
+                                    <option value="">Select Category</option>
+                                    <option value="SD">Software Engineer</option>
+                                    <option value="CD">C++ Developer</option>
+                                    <option value="PD">Python Developer</option>
+                                    <option value="HR">HR Executer</option>
+                                    <option value="AE">Application Engineer</option>
+                                    <option value="A">Accountant</option>
+                                    <option value="SDV">Software Developer</option>
+                                    <option value="BA">Business Analyst</option>
+                                    <option value="O"> Other</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-4">
+                        <select name="f2" class="form-control input-sm">
+                            <option value="">Select State</option>
+                            <option value="AN">Andaman and Nicobar Islands</option>
+                            <option value="AP">Andhra Pradesh</option>
+                            <option value="AR">Arunachal Pradesh</option>
+                            <option value="AS">Assam</option>
+                            <option value="BR">Bihar</option>
+                            <option value="CH">Chandigarh</option>
+                            <option value="CT">Chhattisgarh</option>
+                            <option value="DN">Dadra and Nagar Haveli</option>
+                            <option value="DD">Daman and Diu</option>
+                            <option value="DL">Delhi</option>
+                            <option value="GA">Goa</option>
+                            <option value="GJ">Gujarat</option>
+                            <option value="HR">Haryana</option>
+                            <option value="HP">Himachal Pradesh</option>
+                            <option value="JK">Jammu and Kashmir</option>
+                            <option value="JH">Jharkhand</option>
+                            <option value="KA">Karnataka</option>
+                            <option value="KL">Kerala</option>
+                            <option value="LA">Ladakh</option>
+                            <option value="LD">Lakshadweep</option>
+                            <option value="MP">Madhya Pradesh</option>
+                            <option value="MH">Maharashtra</option>
+                            <option value="MN">Manipur</option>
+                            <option value="ML">Meghalaya</option>
+                            <option value="MZ">Mizoram</option>
+                            <option value="NL">Nagaland</option>
+                            <option value="OR">Odisha</option>
+                            <option value="PY">Puducherry</option>
+                            <option value="PB">Punjab</option>
+                            <option value="RJ">Rajasthan</option>
+                            <option value="SK">Sikkim</option>
+                            <option value="TN">Tamil Nadu</option>
+                            <option value="TG">Telangana</option>
+                            <option value="TR">Tripura</option>
+                            <option value="UP">Uttar Pradesh</option>
+                            <option value="UT">Uttarakhand</option>
+                            <option value="WB">West Bengal</option>
+                        </select>
+                    </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="submit" value="Apply Filter">
+                    </div>
+                </div>
+    </form>
+</div>
+
+<br>
+<div>
+    <table class="table table-hover" id="example" border="1">
+        <thead >
+        <tr style="background-color: #000000;">
+            <th>S.no.</th>
+            <th>Company name</th>
+            <th>Website</th>
+            <th>Title</th>
+            <th>Location</th>
+            <th>Required skill</th>
+            <th>Start date</th>
+            <th>End date</th>
+            <th>Action</th>
+        </tr></thead>
+        <tbody>
+
+        {% for i in job %}
+        {% if i.filter1 == "Interested Field" and i.filter2 == "Location"%}
+            <tr style ="background-color: #DE887">
+                <td align="center">{{forloop.counter}}</td>
+                <td align="center">{{i.recruiter.U_name}}</td>
+                <td align="center"><a href="{{i.recruiter.U_website}}">{{i.recruiter.U_website}}</a></td>
+                <td align="center">{{i.title}}</td>
+                <td align="center">{{i.location}}</td>
+                <td align="center">{{i.skills}}</td>
+                <td align="center">{{i.start_date}}</td>
+                <td align="center">{{i.end_date}}</td>
+                {% if i.id in li %}
+                <td align="center">Applied</td>
+                {% else %}
+                <td align="center"><a href="{% url 'job_detail' i.id %}" class="btn btn-success btn-sm">View Detail</a></td>
+                {% endif %}
+            </tr>
+        {% else %}
+            {% if i.filter1 != "Interested Field" and i.filter2 != "Location"%}
+                {% if i.filter1 == i.role and i.filter2 == i.location %}
+                    <tr style ="background-color: #DE887">
+                        <td align="center">{{forloop.counter}}</td>
+                        <td align="center">{{i.recruiter.U_name}}</td>
+                        <td align="center"><a href="{{i.recruiter.U_website}}">{{i.recruiter.U_website}}</a></td>
+                        <td align="center">{{i.title}}</td>
+                        <td align="center">{{i.location}}</td>
+                        <td align="center">{{i.skills}}</td>
+                        <td align="center">{{i.start_date}}</td>
+                        <td align="center">{{i.end_date}}</td>
+                        {% if i.id in li %}
+                        <td align="center">Applied</td>
+                        {% else %}
+                        <td align="center"><a href="{% url 'job_detail' i.id %}" class="btn btn-success btn-sm">View Detail</a></td>
+                        {% endif %}
+                    </tr>
+                {% endif %}
+            {% elif i.filter1 == "Interested Field" and i.filter2 != "Location" %}
+                {% if i.filter2 == i.location %}
+                    <tr style ="background-color: #DE887">
+                        <td align="center">{{forloop.counter}}</td>
+                        <td align="center">{{i.recruiter.U_name}}</td>
+                        <td align="center"><a href="{{i.recruiter.U_website}}">{{i.recruiter.U_website}}</a></td>
+                        <td align="center">{{i.title}}</td>
+                        <td align="center">{{i.location}}</td>
+                        <td align="center">{{i.skills}}</td>
+                        <td align="center">{{i.start_date}}</td>
+                        <td align="center">{{i.end_date}}</td>
+                        {% if i.id in li %}
+                        <td align="center">Applied</td>
+                        {% else %}
+                        <td align="center"><a href="{% url 'job_detail' i.id %}" class="btn btn-success btn-sm">View Detail</a></td>
+                        {% endif %}
+                    </tr>
+                {% endif %}
+            {% else %}
+                {% if i.filter1 == i.role %}
+                    <tr style ="background-color: #DE887">
+                        <td align="center">{{forloop.counter}}</td>
+                        <td align="center">{{i.recruiter.U_name}}</td>
+                        <td align="center"><a href="{{i.recruiter.U_website}}">{{i.recruiter.U_website}}</a></td>
+                        <td align="center">{{i.title}}</td>
+                        <td align="center">{{i.location}}</td>
+                        <td align="center">{{i.skills}}</td>
+                        <td align="center">{{i.start_date}}</td>
+                        <td align="center">{{i.end_date}}</td>
+                        {% if i.id in li %}
+                        <td align="center">Applied</td>
+                        {% else %}
+                        <td align="center"><a href="{% url 'job_detail' i.id %}" class="btn btn-success btn-sm">View Detail</a></td>
+                        {% endif %}
+                    </tr>
+                {% endif %}
+            {% endif %}
+        {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+<style>
+.container2 {
+    backgroud-color: #0B5345;
+    padding : 25px;
+}
+*{
+    box-sizing: border-box;
+}
+</style>
+{%if error == "no"%}
+<script>
+window.location.replace('{% url 'job_search' %}');
+</script>
+{% endif %}
+{% endblock %}

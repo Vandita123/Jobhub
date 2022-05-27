@@ -1,0 +1,65 @@
+{% load static %}
+{% block jobseeker_navigation %}
+{% include 'jobseeker_navigation.html' %}
+
+<hr>
+<div class="container shadow-lg py-2 mb-2">
+    <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>First Name</label>
+                        <input type="text" class="form-control" name="fname" value="{{student.J_fname}}" readonly>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control" name="lname" value="{{student.J_lname}}" readonly>
+                    </div>
+                </div>
+<div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label>First Name</label>
+                        <input type="text" class="form-control" name="fname" value="{{student.user.username}}" readonly>
+                    </div>
+</div>
+<div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label>Contact</label>
+                        <input type="text" class="form-control" name="contact" value="{{student.J_contact}}" readonly>
+                    </div>
+                </div>
+<div class="mt-4">
+    <br>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-row">
+            <label class="font-weight-bold"> Upload Resume</label>
+            <input type="file" class="form-control" name="resume">
+        </div>
+        <input type="submit" value="Submit" class="btn btn-danger mt-3">
+    </form>
+</div>
+</div>
+
+{% if error == "no" %}
+<script>
+  alert("Job application submitted");
+  window.location.replace('{% url 'job_search' %}');
+</script>
+{% endif %}
+
+{% if error == "close" %}
+<script>
+  alert("Application line is close....");
+
+  window.location.replace('{% url 'job_search' %}');
+
+</script>
+{% endif %}
+
+{% if error == "notopen" %}
+<script>
+  alert("Application line is not open yet....");
+  window.location.replace('{% url 'job_search' %}');
+</script>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% load static %}
+{% block jobprovider_navigation %}
+{% include 'jobprovider_navigation.html' %}
+<br>
+<h2 align="center" style="">
+    Manage Job Details
+</h2>
+<hr>
+<div class="container">
+    <table border="1" class="table table-hover" id="example">
+        <thead>
+        <tr style="background-color: #000000;">
+            <th>recruiter</th>
+            <th>start_date</th>
+            <th>end_date</th>
+            <th>title</th>
+            <th>location</th>
+            <th>contact</th>
+            <th>experience</th>
+            <th>salary</th>
+            <th>skill</th>
+            <th>about</th>
+            <th>creationdate</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+
+
+        <tbody>
+        {% for i in job %}
+        <tr>
+            <td>{{i.recruiter.U_email}}</td>
+            <td>{{i.start_date}}</td>
+            <td>{{i.end_date}}</td>
+            <td>{{i.title}}</td>
+            <td>{{i.location}}</td>
+            <td>{{i.contact}}</td>
+            <td>{{i.experience}}</td>
+            <td>{{i.salary}}</td>
+            <td>{{i.skills}}</td>
+            <td>{{i.about}}</td>
+            <td>{{i.creationdate}}</td>
+            <td><a href="{% url 'delete_job' i.id %}" class="btn btn-success btn-sm">Delete</a>
+                <a href="{% url 'edit_job' i.id %}" class="btn btn-success btn-sm">Edit</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% load static %}
+{% block header%}
+{% include 'header.html' %}
+
+	 <div class="container">
+    <div class="single">
+	   <div class="form-container">
+        <h2>Login as jobseeker</h2>
+           {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-info">
+                    {{ message }}
+                </div>
+            {% endfor %}
+           {% endif %}
+
+        <form method="post">
+  			{% csrf_token %}
+          <div class="row">
+            <div class="form-group col-md-12">
+                        </div>
+                        <div class="textbox-wrap" >
+                            <div class="input-group">
+                                <span class="input-group-addon "><i class="fa fa-user"></i></span>
+                                <input type="email" required="required" class="form-control" name="username" placeholder="Enter Email">
+                            </div>
+                        </div>
+                        <div class="textbox-wrap">
+                            <div class="input-group">
+                                <span class="input-group-addon "><i class="fa fa-key"></i></span>
+                                <input type="password" required="required" class="form-control " name="password" placeholder="Enter Password">
+                            </div>
+                        </div>
+		  		</div>
+
+                <label>Don't have an account <a href="/jobseeker_signup">Register here</a></label>
+                     <div class="forgot">
+				 		  <div class="login-para">
+				 			<p><a href="\forget-password"> Forgot Password? </a></p>
+				 		 </div>
+					     <div class="clearfix"> </div>
+			        </div>
+					<div class="login-btn">
+					   <input type="submit" value="Log in">
+					</div>
+					<div class="login-bottom">
+
+		           </div>
+  <div class="clearfix"> </div>
+</form>
+</div>
+</div>
+</div>
+{%if error == "no"%}
+<script>
+alert("Login successfully!")
+window.location.replace('{% url 'job_search' %}');
+</script>
+{% endif %}
+
+{% endblock %}

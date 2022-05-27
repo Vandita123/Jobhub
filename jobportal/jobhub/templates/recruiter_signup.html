@@ -1,0 +1,95 @@
+{% load static %}
+{% block header%}
+{% include 'header.html' %}
+
+<div class="container">
+    <div class="single">  
+	   <div class="form-container">
+           {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-info">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+           {% endif %}
+        <h2>Register as jobprovider</h2>
+           <span style="color:#ff0000;font-size:12px;">* are the Required field</span>
+        <form method="post">
+            {% csrf_token %}
+          <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-3 control-lable">Company Name<span style="color:#ff0000;font-size:20px;">*</span></label>
+                <div class="col-md-9">
+                    <input type="text" name="cname" placeholder="Company name" required class="form-control input-sm"/>
+                </div>
+            </div>
+         </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-3 control-lable">Email<span style="color:#ff0000;font-size:20px;">*</span></label>
+                <div class="col-md-9">
+                    <input type="text" name="email" placeholder="example@email.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required class="form-control input-sm"/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-3 control-lable">Password<span style="color:#ff0000;font-size:20px;">*</span></label>
+                <div class="col-md-9">
+                    <input type="password" name="pass" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" required class="form-control input-sm"/>
+                <div style="font-size:12px; color:#5499C7">NOTE: Password should be of minimum 8 characters including atleast 1 uppercase, 1 lowercase, 1 digit</div>
+                </div>
+            </div>
+        </div>
+            <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-3 control-lable">Conform Password<span style="color:#ff0000;font-size:20px;">*</span></label>
+                <div class="col-md-9">
+                    <input type="password" name="cpass" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" required class="form-control input-sm"/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-3 control-lable">Mobile Number<span style="color:#ff0000;font-size:20px;">*</span></label>
+                <div class="col-md-9">
+                    <input type="tel" name="mobile" placeholder="0000000000" pattern="[7-9]{1}[0-9]{9}" required class="form-control input-sm"/>
+                </div>
+            </div>
+        </div>
+<div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-3 control-lable">Address<span style="color:#ff0000;font-size:20px;">*</span></label>
+                <div class="col-md-9">
+                    <input type="text" name="address" placeholder="Address" required class="form-control input-sm"/>
+                </div>
+            </div>
+         </div>
+
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-3 control-lable">Website<span style="color:#ff0000;font-size:20px;">*</span></label>
+                <div class="col-md-9">
+                    <input type="text" name="website" placeholder="Website url" pattern="https?://.+" required class="form-control input-sm"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-3 control-lable">Description</label>
+                <div class="col-md-9 sm_1">
+                   <textarea name="description" cols="77" rows="6" onfocus="this.value='';" onblur="if (this.value == '') {this.value = '';}"> </textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-actions floatRight">
+                <input type="submit" value="Register" class="btn btn-primary btn-sm">
+            </div>
+        </div>
+    </form>
+    </div>
+ </div>
+</div>
+{% endblock %}
