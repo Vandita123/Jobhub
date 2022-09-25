@@ -4,16 +4,16 @@ for finding a right and a satisfactory job while companies publish their vacanci
 candidates. OJP is prepared to provide all categories of jobs and help to get various types of jobs. The 
 main purpose of the job portal is to provide the facility to job seekers for getting a quick job. So, it 
 enables applicants to search for jobs in a convenient manner and to enable employers to find suitable 
-candidates.\
+candidates.  
 JOBHUB is a package to be used by agencies to improve the efficiency of business. The system 
 provides jobs catalogue and information to members and helps them decide on the jobs to apply. The 
 Admin and employers can keep the jobs catalogue updated all the time so that the Job seekers get the 
-updated information all the time.\
+updated information all the time.
 
-PRODUCT FUNCTIONS\
-Functioning is as follows:\
-⮚ A welcome page will be redirected the user to avail the displayed functionalities
-⮚ Jobseeker has to register first for applying job
+PRODUCT FUNCTIONS
+Functioning is as follows:  
+⮚ A welcome page will be redirected the user to avail the displayed functionalities  
+⮚ Jobseeker has to register first for applying job  
   o On clicking the login button the jobseeker will be redirected to the login page
   o Jobseeker can view customised vacancy posted in the portal
   o Jobseeker get notification about the new position recently posted on the website.
