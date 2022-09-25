@@ -10,27 +10,24 @@ provides jobs catalogue and information to members and helps them decide on the 
 Admin and employers can keep the jobs catalogue updated all the time so that the Job seekers get the 
 updated information all the time.
 
-PRODUCT FUNCTIONS
+<b>PRODUCT FUNCTIONS</b>
 Functioning is as follows:  
 ⮚ A welcome page will be redirected the user to avail the displayed functionalities  
-⮚ Jobseeker has to register first for applying job  
-  o On clicking the login button the jobseeker will be redirected to the login page
-  o Jobseeker can view customised vacancy posted in the portal
-  o Jobseeker get notification about the new position recently posted on the website.
-  o For applying job, jobseeker has to fill some personal information and upload his resume
-  o A confirmation message will be received by jobseeker after registration
+⮚ Jobseeker has to register first for applying job    
+     o On clicking the login button the jobseeker will be redirected to the login page
+     o Jobseeker can view customised vacancy posted in the portal
+     o Jobseeker get notification about the new position recently posted on the website.
+     o For applying job, jobseeker has to fill some personal information and upload his resume
+     o A confirmation message will be received by jobseeker after registration  
 ⮚ Jobprovider has to register first for posting any vacancy
-  o On clicking the login button the Jobprovider will be redirected to the login page
-  o For posting vacancy, job provider has to fill information about the post like position, 
-  time duration, salary, etc
-  o A confirmation message will be received by jobseeker after posting
-  o Jobprovider can view the profile and resume of job seeker who has applied in their 
-  particular vacancy 
+     o On clicking the login button the Jobprovider will be redirected to the login page
+     o For posting vacancy, job provider has to fill information about the post like position, time duration, salary, etc
+     o A confirmation message will be received by jobseeker after posting
+     o Jobprovider can view the profile and resume of job seeker who has applied in their particular vacancy   
 ⮚ The admin can control website
-  o On clicking the login button the admin will be redirected to the login page
-  o The admin can view the total number of job seeker and job provider registered in the 
-  portal
-  o The admin can update database of jobseeker and job provider
+     o On clicking the login button the admin will be redirected to the login page
+     o The admin can view the total number of job seeker and job provider registered in the portal
+     o The admin can update database of jobseeker and job provider  
 So, the functions allowed for each type of user are specified below:
 ⮚ ADMIN
 This user is responsible for maintaining and updating the website and viewing the total numbers 
