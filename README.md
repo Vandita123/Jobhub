@@ -40,5 +40,6 @@ This user can fill in the details to register in the portal and after email veri
 
 ![image](https://user-images.githubusercontent.com/86514115/192155830-487649b7-92dd-4a2a-a9a7-bbd1c41dce38.png)
 
-<b>E-R DIAGRAM<b>
+<b>E-R DIAGRAM<b> 
+    
 ![Screenshot 2022-09-26 002658](https://user-images.githubusercontent.com/86514115/192246092-e733aef7-1847-4689-87d9-ca141258e7f8.png)
