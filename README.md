@@ -14,16 +14,16 @@ Functioning is as follows:  <br>
     <tab> o Jobseeker can view customised vacancy posted in the portal<br>
     <tab> o Jobseeker get notification about the new position recently posted on the website.<br>
     <tab> o For applying job, jobseeker has to fill some personal information and upload his resume<br>
-    <tab> o A confirmation message will be received by jobseeker after registration  <br>
+    <tab> o A confirmation message will be received by jobseeker after registration  <br><br>
 ⮚ Jobprovider has to register first for posting any vacancy<br>
     <tab> o On clicking the login button the Jobprovider will be redirected to the login page<br>
     <tab> o For posting vacancy, job provider has to fill information about the post like position, time duration, salary, etc<br>
     <tab> o A confirmation message will be received by jobseeker after posting<br>
-    <tab> o Jobprovider can view the profile and resume of job seeker who has applied in their particular vacancy <br>
+    <tab> o Jobprovider can view the profile and resume of job seeker who has applied in their particular vacancy <br><br>
 ⮚ The admin can control website<br>
     <tab> o On clicking the login button the admin will be redirected to the login page<br>
     <tab> o The admin can view the total number of job seeker and job provider registered in the portal<br>
-    <tab> o The admin can update database of jobseeker and job provider  <br>
+    <tab> o The admin can update database of jobseeker and job provider  <br><br>
 So, the functions allowed for each type of user are specified below:<br>
 <b>⮚ ADMIN</b><br>
 This user is responsible for maintaining and updating the website and viewing the total numbers of jobseeker and job provider register and their profile. They can update any data, add new features to the website at any time without creating any conflict or any confusion for the rest of the users. The admin can send messages to any job seeker and job provider and delete their data.<br>
